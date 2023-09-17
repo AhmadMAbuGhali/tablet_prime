@@ -29,7 +29,7 @@ class _OneState extends State<One> {
           SizedBox(height: 50.h,),
           Text("login".tr,style: getPrimaryStyle(),),
       ElevatedButton(onPressed: (){
-Get.toNamed(RouteHelper.two);
+Get.toNamed(RouteHelper.imagePickers);
       }, child: Text("Hdsfasfas"))
         ],
       ),

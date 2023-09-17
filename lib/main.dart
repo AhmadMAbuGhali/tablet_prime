@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:tablet_prime/pages/club_magazen.dart';
 import 'package:tablet_prime/pages/one.dart';
 import 'package:tablet_prime/resources/color_manager.dart';
 import 'package:tablet_prime/routes/route_helper.dart';
+import 'package:tablet_prime/service/app_provider.dart';
 
 import 'locale/locale.dart';
 
@@ -12,7 +14,16 @@ import 'locale/locale.dart';
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MultiProvider(
+    providers: [
+
+      ChangeNotifierProvider(create: (_) => AppProvider()),
+    ],
+    child: const MyApp(),
+  ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +46,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Tajawal',
               primaryColor: Color(0xFF8A57DC),
             ),
-            initialRoute: RouteHelper.one,
+            initialRoute: RouteHelper.tabBarCustom,
             getPages: RouteHelper.routes,
           );
         });

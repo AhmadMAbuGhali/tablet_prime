@@ -8,6 +8,12 @@
 	<string>Tablet Prime</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>palse give me accses</string>
+   	<key>NSCameraUsageDescription</key>
+   	<string>palse give me accses</string>
+   	<key>NSMicrophoneUsageDescription</key>
+   	<string>palse give me accses</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
