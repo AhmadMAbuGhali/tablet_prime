@@ -6,7 +6,18 @@ import 'package:image_picker/image_picker.dart';
 
 class AppProvider extends ChangeNotifier {
   int data = 0;
+  bool isSwitched = false;
 
+  List<String> prime =["ahmad","sami","Jmal","ahmad","sami","Jmal","ahmad","sami","Jmal","ahmad","sami","Jmal",];
+
+
+  changeValue(bool value){
+    isSwitched = value;
+    notifyListeners();
+
+  }
+
+  String? dataFromOne;
   addOntToData(){
     data +=1;
     notifyListeners();

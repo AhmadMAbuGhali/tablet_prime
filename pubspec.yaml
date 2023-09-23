@@ -35,9 +35,13 @@ dependencies:
   contained_tab_bar_view: ^0.8.0
   flutter_svg: ^2.0.7
   expandable: ^5.0.1
+  percent_indicator: ^3.4.0
   get: ^4.6.6
   provider: ^6.0.5
   image_picker: ^0.8.9
+  sqflite: ^2.3.0
+  path: ^1.8.0
+  shared_preferences: ^2.2.1
 
 
   # The following adds the Cupertino Icons font to your application.
