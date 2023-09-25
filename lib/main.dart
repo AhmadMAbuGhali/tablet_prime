@@ -9,19 +9,20 @@ import 'package:tablet_prime/pages/one.dart';
 import 'package:tablet_prime/resources/color_manager.dart';
 import 'package:tablet_prime/routes/route_helper.dart';
 import 'package:tablet_prime/service/app_provider.dart';
+import 'package:tablet_prime/service/data_provider.dart';
 import 'package:tablet_prime/service/sqlite_service.dart';
 
 import 'locale/locale.dart';
-
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 late SharedPreferences shaedpref;
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   shaedpref = await SharedPreferences.getInstance();
+  final database = await SqliteService.initizateDb();
+
   final prefs = await SharedPreferences.getInstance();
   final db = await SqliteService.initizateDb();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -30,12 +31,12 @@ void main() async{
   ));
   runApp(
     MultiProvider(
-    providers: [
-
-      ChangeNotifierProvider(create: (_) => AppProvider()),
-    ],
-    child: const MyApp(),
-  ),
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppProvider()), // Create AppProvider
+        ChangeNotifierProvider(create: (_) => DataProvider(database)), // Create DataProvider
+      ],
+      child: const MyApp(),
+    ),
   );
 }
 
@@ -49,7 +50,6 @@ class MyApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         splitScreenMode: true,
-
         builder: (context, child) {
           return GetMaterialApp(
             locale: shaedpref.getString("curruntLang") == null
@@ -61,11 +61,9 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Tajawal',
               primaryColor: Color(0xFF8A57DC),
             ),
-            initialRoute: RouteHelper.screenOne,
+            initialRoute: RouteHelper.home,
             getPages: RouteHelper.routes,
           );
         });
   }
 }
-
-
